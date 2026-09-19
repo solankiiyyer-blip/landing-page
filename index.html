@@ -4,13 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+<!--DOMAINNOTE-->
 <!-- ═══════════════════════════════════════════════════════════════
-     CANONICAL / OG DOMAIN — replace SITE_ORIGIN in the 4 tags below
-     with the live domain (e.g. https://www.example.com) before launch.
+     NO DOMAIN YET. The canonical and og:url tags are commented out on
+     purpose: a canonical pointing at a domain that isn't live tells
+     crawlers the real page is somewhere else. og:image is root-relative,
+     which works on *.pages.dev.
+
+     When the domain is ready, run ./set-domain.sh https://your-domain.com
+     — it uncomments both tags and makes og:image absolute (WhatsApp and
+     most link scrapers need an absolute og:image to show the preview).
      ═══════════════════════════════════════════════════════════════ -->
+<!--/DOMAINNOTE-->
 <title>Sankirt Jasmine — 1 &amp; 2 BHK Homes, Andheri East, Mumbai</title>
 <meta name="description" content="Sankirt Jasmine, Andheri East: 1 &amp; 2 BHK homes of 464–486 and 626–642 sq.ft, plus Jodi homes of 1098–1105 sq.ft. Two wings, fourteen floors. Indicative pricing from ₹1.18 Cr. Possession March 2029. MahaRERA PM1180002502396.">
-<link rel="canonical" href="SITE_ORIGIN/">
+<!--CANONICAL--><!-- <link rel="canonical" href="SITE_ORIGIN/"> -->
 <meta name="theme-color" content="#0E1726">
 <meta name="format-detection" content="telephone=no">
 
@@ -18,8 +26,8 @@
 <meta property="og:site_name" content="Sankirt Jasmine — Andheri East">
 <meta property="og:title" content="Sankirt Jasmine — Nine ways in. One address.">
 <meta property="og:description" content="1 &amp; 2 BHK homes at Mogra Village, Andheri East. Rail, metro, highway and airport all five to fifteen minutes out. Possession March 2029.">
-<meta property="og:url" content="SITE_ORIGIN/">
-<meta property="og:image" content="SITE_ORIGIN/assets/img/og-cover.jpg">
+<!--OGURL--><!-- <meta property="og:url" content="SITE_ORIGIN/"> -->
+<meta property="og:image" content="/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Aerial view of the two wings of Sankirt Jasmine with the suburban rail line running alongside.">

@@ -8,21 +8,44 @@ navigation pattern, icon style or lead-capture UI with sankirtjasmin.com.
 
 ---
 
-## ⚠️ One thing to do before launch
+## Deploying to Cloudflare Pages
 
-`index.html` contains the placeholder **`SITE_ORIGIN`** in four tags (canonical,
-`og:url`, `og:image`, and the comment above them). Replace all four with the live
-origin, no trailing slash:
+`sankirt-jasmine-cloudflare-pages.zip` has `index.html` at its root, which is what
+Cloudflare expects.
+
+1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** →
+   **Upload assets**.
+2. Name the project, drop the ZIP in, **Deploy**.
+3. You get a `https://<project>.pages.dev` URL. That's the preview — everything works
+   on it, including the WhatsApp links.
+
+`_headers` ships with the site and Cloudflare applies it automatically: a year of
+immutable caching on fonts, a month on images and plans, plus `nosniff`,
+`Referrer-Policy`, `X-Frame-Options` and a `Permissions-Policy`.
+
+To redeploy later, upload a new ZIP to the same project — or connect the Git repo and
+let it build on push (no build command, output directory `/`).
+
+### When the domain is ready
+
+Nothing is hard-coded to a domain. The `canonical` and `og:url` tags are deliberately
+commented out, because a canonical pointing at a domain that isn't live yet tells
+crawlers the real page is somewhere else. `og:image` is root-relative for now.
+
+From the site root, run:
 
 ```bash
-sed -i 's|SITE_ORIGIN|https://your-domain.com|g' index.html
+./set-domain.sh https://www.your-domain.com
 ```
 
-Everything else ships ready.
+That uncomments both tags, makes `og:image` absolute (WhatsApp and most link scrapers
+need an absolute URL to render a preview) and removes the placeholder note. Then add
+the custom domain in Cloudflare Pages → your project → **Custom domains**, and
+re-upload.
 
 ---
 
-## Running it
+## Running it locally
 
 No build step, no dependencies. It is plain HTML/CSS/JS — but it must be served over
 HTTP, not opened as a `file://` URL, or the browser blocks the self-hosted fonts.
@@ -32,14 +55,14 @@ python3 -m http.server 8000
 # → http://127.0.0.1:8000
 ```
 
-Deploy by copying the whole directory to any static host.
-
 ---
 
 ## Structure
 
 ```
 index.html
+_headers                   Cloudflare Pages caching + security headers
+set-domain.sh              one-shot domain switch, run when DNS is ready
 assets/css/styles.css      design tokens, then sections in page order
 assets/js/main.js          scrollspy, hero parallax, estimator, lead form, plan gate
 assets/fonts/*.woff2       14 self-hosted subsets (224 KB total)
