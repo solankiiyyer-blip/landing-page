@@ -95,7 +95,7 @@ button,input{font:inherit;color:inherit}
 .band--signal :where(a,button,summary,input):focus-visible{outline-color:var(--ink)}
 
 .skip{position:fixed;top:-100px;left:8px;z-index:90;background:var(--ink);color:var(--paper);
-  padding:12px 20px;font:500 .875rem var(--body);text-decoration:none}
+  padding:14px 20px;font:500 .875rem var(--body);text-decoration:none}
 .skip:focus{top:8px}
 
 .mono-lbl{font:500 .6875rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.14em}
@@ -107,7 +107,7 @@ button,input{font:inherit;color:inherit}
 /* ink on vermilion = 5.07:1 — white would only be 3.3:1 */
 .btn--signal{background:var(--signal);color:var(--ink)}
 .btn--signal:hover{background:var(--ink);color:var(--paper)}
-.btn--line{background:none;color:inherit;border:1.5px solid currentColor;padding:13px 22px;font-size:.875rem}
+.btn--line{background:none;color:inherit;border:1.5px solid currentColor;padding:15px 22px;font-size:.875rem}
 .btn--line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .band--ink .btn--line:hover,.foot .btn--line:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .btn--ghost{background:none;color:var(--paper);border:1.5px solid var(--paper-16)}
@@ -273,7 +273,7 @@ button,input{font:inherit;color:inherit}
 .lead .chips legend{color:var(--ink-52)}
 .chips label{display:inline-block;margin:0 8px 8px 0}
 .chips input{position:absolute;opacity:0;width:1px;height:1px}
-.chips span{display:block;padding:12px 20px;border:1.5px solid var(--paper-16);
+.chips span{display:block;padding:14px 20px;border:1.5px solid var(--paper-16);
   font:500 .875rem/1 var(--body);cursor:pointer;transition:background .16s,color .16s,border-color .16s}
 .chips input:checked+span{background:var(--signal);border-color:var(--signal);color:var(--ink)}
 .chips input:focus-visible+span{outline:2px solid var(--signal);outline-offset:3px}
@@ -327,11 +327,12 @@ button,input{font:inherit;color:inherit}
 .plan figcaption span{font:500 .625rem/1 var(--mono);letter-spacing:.1em;color:var(--signal);white-space:nowrap}
 /* inline unlock form, injected by JS onto each plan */
 .gate{grid-area:1/1;z-index:2;display:grid;align-content:center;gap:10px;
-  padding:18px;background:rgba(14,23,38,.74);backdrop-filter:blur(1px)}
+  padding:18px;background:rgba(14,23,38,.74);
+  -webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
 .gate p{font:500 .625rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--paper)}
 .gate__row{display:flex;gap:8px}
 .gate input[type=tel]{flex:1;min-width:0;background:transparent;border:1.5px solid var(--paper-16);
-  color:var(--paper);padding:11px 12px;font:500 .875rem/1 var(--mono)}
+  color:var(--paper);padding:12px;font:500 1rem/1 var(--mono)}  /* 16px: any smaller and iOS zooms on focus */
 .gate input[type=tel]::placeholder{color:var(--paper-52)}
 .gate input[type=tel]:focus-visible{outline:none;border-color:var(--signal)}
 .gate button{background:var(--signal);color:var(--ink);border:0;cursor:pointer;
@@ -426,9 +427,12 @@ button,input{font:inherit;color:inherit}
 .foot__card{border:1px solid var(--paper-16);padding:28px}
 .foot__card .mono-lbl{color:var(--signal)}
 .foot__name{margin-top:12px;font:800 clamp(1.5rem,3vw,2rem)/1.1 var(--display);letter-spacing:-.03em}
-.foot__links{margin-top:20px;display:grid;gap:10px}
-.foot__links a{font:500 1rem/1.4 var(--mono);text-decoration:none;border-bottom:1px solid var(--paper-16);
-  padding-bottom:4px;display:inline-block}
+.foot__links{margin-top:20px;display:grid;gap:18px}
+.foot__links a{position:relative;font:500 1rem/1.4 var(--mono);text-decoration:none;
+  border-bottom:1px solid var(--paper-16);padding-bottom:4px;display:inline-block}
+/* grows the touch target to 45px without shifting the underline; the 18px row
+   gap keeps neighbouring targets from overlapping */
+.foot__links a::after{content:"";position:absolute;inset:-9px 0}
 .foot__links a:hover{border-color:var(--signal);color:var(--signal)}
 .foot__addr{margin-top:22px;font-size:.875rem;line-height:1.6;color:var(--paper-72);max-width:38ch}
 .foot__rera{margin-top:16px;color:var(--paper-52)}
