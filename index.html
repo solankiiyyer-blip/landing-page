@@ -67,18 +67,24 @@
 <!-- ── 01 · HERO ──────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero__text">
+    <p class="hero__stop" aria-hidden="true"><i></i><span>You are here — Sankirt Jasmine</span></p>
     <p class="eyebrow">Mogra Village · Andheri East · Mumbai 400069</p>
     <h1 class="hero__h1">Nine&nbsp;ways in.<br>One&nbsp;address.</h1>
     <p class="hero__sub">Sankirt Jasmine — 1 &amp; 2 BHK homes in Andheri East, with rail, metro, highway and airport all five to fifteen minutes out.</p>
     <p class="hero__cta">
       <button type="button" class="btn btn--signal" data-lead="Hero">Get price &amp; floor plans</button>
     </p>
-    <p class="hero__stop" aria-hidden="true"><i></i><span>You are here — Sankirt Jasmine</span></p>
   </div>
 
   <div class="hero__img">
-    <img src="assets/img/hero-aerial.jpg" width="1600" height="1193" fetchpriority="high" decoding="async"
-         alt="Aerial view of the two wings of Sankirt Jasmine, with planted rooftop terraces above and the suburban rail line running along the left edge of the plot.">
+    <picture>
+      <!-- art direction: phones get a portrait crop that keeps the building
+           large and the rail line in frame; a cover-crop of the landscape
+           render would lose both -->
+      <source media="(max-width:639px)" srcset="assets/img/hero-aerial-portrait.jpg" width="840" height="1193">
+      <img src="assets/img/hero-aerial.jpg" width="1600" height="1193" fetchpriority="high" decoding="async"
+           alt="Aerial view of the two wings of Sankirt Jasmine, with planted rooftop terraces above and the suburban rail line running along the left edge of the plot.">
+    </picture>
   </div>
   <p class="hero__credit">Artist's impression</p>
 </section>
